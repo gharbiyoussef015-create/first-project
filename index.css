@@ -1,0 +1,357 @@
+/* ===== MAIN CONTAINER ===== */
+body{
+    margin: 0;
+    padding: 0;
+}
+#container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ===== LEFT SIDE ===== */
+#login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+}
+
+#login-left > div {
+  max-width: 500px;
+}
+
+#login-left h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.features {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.features:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.features h4 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.features p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* ===== RIGHT SIDE ===== */
+#login-right {
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+#form {
+  width: 100%;
+  max-width: 450px;
+}
+
+#informations {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+#informations h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #333;
+  font-weight: 700;
+}
+
+/* ===== FORM INPUTS ===== */
+#email, #password {
+  margin-bottom: 20px;
+}
+
+#email label, #password label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: capitalize;
+}
+
+#email input, #password input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: all 0.3s;
+}
+
+#email input:focus, #password input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#email input::placeholder, #password input::placeholder {
+  color: #a0aec0;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+#submit {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+#submit span a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#submit span a:hover {
+  text-decoration: underline;
+}
+
+/* ===== OTHER OPTIONS ===== */
+#other-options {
+  margin-top: 40px;
+}
+
+#create-acc {
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#create-acc a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+#create-acc a:hover {
+  color: #667eea;
+  text-decoration: underline;
+}
+
+#other {
+  text-align: center;
+}
+
+#other span {
+  display: block;
+  color: #a0aec0;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#other span::before,
+#other span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+#other span::before {
+  left: 0;
+}
+
+#other span::after {
+  right: 0;
+}
+
+#other-ways {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#log-google, #log-github {
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#log-google:hover {
+  border-color: #db4437;
+  background: #f8fafc;
+}
+
+#log-github:hover {
+  border-color: #333;
+  background: #f8fafc;
+}
+
+/* Add icons for buttons */
+#log-google::before {
+  content: 'G';
+  font-weight: bold;
+  color: #db4437;
+  font-size: 1.1rem;
+}
+
+#log-github::before {
+  content: '🐙';
+  font-size: 1.1rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  #container {
+    flex-direction: column;
+  }
+  
+  #login-left, #login-right {
+    flex: none;
+    min-height: 50vh;
+  }
+  
+  #login-left {
+    padding: 40px 20px;
+  }
+  
+  #login-right {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  #informations {
+    padding: 30px;
+  }
+  
+  #login-left h1 {
+    font-size: 2.5rem;
+  }
+  
+  .features {
+    padding: 15px;
+  }
+  
+  #other-ways {
+    flex-direction: column;
+  }
+}
+#email{
+    margin-left:30px;
+}
+
+
+
+
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f8fafc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard h1 {
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.user-info {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.logout-btn {
+  background: #fc8181;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #f56565;
+}
+
+.tasks-preview {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.tasks-preview h3 {
+  color: #667eea;
+  margin-bottom: 15px;
+}
