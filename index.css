@@ -355,3 +355,17 @@ body{
   color: #667eea;
   margin-bottom: 15px;
 }
+.mode-btn {
+  background: #ed7474;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.mode-btn:hover {
+  background: #f56565;
+}

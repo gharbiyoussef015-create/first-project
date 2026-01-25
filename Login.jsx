@@ -4,16 +4,18 @@ function Login(){
     
    
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false); 
     const [error,setError] = useState('');
     const demoAccounts = [
     { email: "admin@admin.com", password: "1234" },
     { email: "user@test.com", password: "test123" }
   ];
+    const [darkmode , setDarkmode]=useState(false)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const submit = (formData) => {
+        const email=formData.get("email")
+        setEmail(email)
+        const password=formData.get("password")
         setError('');
         
         // FAKE LOGIN
@@ -29,21 +31,45 @@ function Login(){
         };
 
             //DASHBOARD
-
+            const [newTask, setNewTask] = useState([]); 
+            const thing=newTask.map(thing => <p key={thing}> {thing} </p>)
+            
         if (isLoggedIn) {
+            function add(){
+                setNewTask(
+                    prev=>[...prev , 
+                    <div> 
+                        <input key={thing} id='newtask' type="text" placeholder="task"/>
+                        <button id='deletetask' onclick={reset}>+</button> 
+                    </div>])
+            }
+
+            function reset(){
+                setNewTask([])
+            }
+            function switche(){
+                setDarkmode(prev=>!prev)}
+
             return (
-            <div className="dashboard" >
-                <h1>📋 Task Manager Dashboard</h1>
-                <div className="user-info">
+                
+            <div style={{ backgroundColor: darkmode ?  "#f8fafc":"#222222" }} className="dashboard" > 
+            <button className="mode-btn" onClick={switche}>change mode</button>
+                <h1 style={{ color: darkmode ?  "#222222" : "#f8fafc" }}>📋 Task Manager Dashboard</h1> 
+
+
+                <div className="user-info" >
                 <p>Logged in as: <strong>{email}</strong></p>
+                
                 <button onClick={() => setIsLoggedIn(false)}  className="logout-btn">
-                    Logout
+                    Logout 
                 </button>
                 </div>
 
+
                 <div className="tasks-preview">
-                    <h3>Your tasks will appear here</h3>
-                    <p>Next: Build the actual task dashboard!</p>
+                    <button onClick={add} >new task</button>
+                    <button onClick={reset} >delete all tasks</button>
+                    <h2>{thing}</h2>
                 </div>
             </div>
             );
@@ -72,32 +98,32 @@ function Login(){
             </div>
             <div id="login-right">
                 
-                <form onSubmit={handleSubmit} id="form">
+                <form action={submit} id="form">
                     <div id="informations">
                         <h2>Connexion</h2>
                         <div className="input-group">
-                            <label htmlFor="email">Email:</label>
+                            <label htmlFor="email">Email:
                             
                             <input 
                                 type="email" 
                                 id="email" 
                                 required 
                                 placeholder="example@gmail.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                name='email'
                             />
+                            </label>
                         </div>
                         <div className="input-group">
-                            <label htmlFor="pass">Password:</label>
+                            <label htmlFor="pass">Password:
                             
                             <input 
                                 type="password"  
                                 id="pass" 
                                 required 
                                 placeholder="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                name='password'
                             />
+                            </label>
                             
                                 {error && (<div className="error-message">❌{error}</div>)}
                         </div>
