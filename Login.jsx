@@ -30,50 +30,50 @@ function Login(){
     }
         };
 
-            //DASHBOARD
-            const [newTask, setNewTask] = useState([]); 
-            const thing=newTask.map(thing => <p key={thing}> {thing} </p>)
-            
-        if (isLoggedIn) {
-            function add(){
-                setNewTask(
-                    prev=>[...prev , 
-                    <div> 
-                        <input key={thing} id='newtask' type="text" placeholder="task"/>
-                        <button id='deletetask' onclick={reset}>+</button> 
-                    </div>])
-            }
+    // DASHBOARD
+    const [tasks, setTasks] = useState([]);
+    
+    if (isLoggedIn) {
+        function addTask() {
+            const taskId = Date.now(); // Simple unique ID
+            setTasks(prev => [...prev, { id: taskId, text: '' }]);
+        }
 
-            function reset(){
-                setNewTask([])
-            }
-            function switche(){
-                setDarkmode(prev=>!prev)}
+        function clearAllTasks() {
+            setTasks([]);
+        }
+        
+        function toggleDarkMode() {
+            setDarkmode(prev => !prev);
+        }
 
-            return (
-                
-            <div style={{ backgroundColor: darkmode ?  "#f8fafc":"#222222" }} className="dashboard" > 
-            <button className="mode-btn" onClick={switche}>change mode</button>
-                <h1 style={{ color: darkmode ?  "#222222" : "#f8fafc" }}>📋 Task Manager Dashboard</h1> 
+        return (
+            <div style={{ backgroundColor: darkmode ? "#f8fafc" : "#222222" }} className="dashboard">
+                <button className="mode-btn" onClick={toggleDarkMode}>change mode</button>
+                <h1 style={{ color: darkmode ? "#222222" : "#f8fafc" }}>📋 Task Manager Dashboard</h1>
 
-
-                <div className="user-info" >
-                <p>Logged in as: <strong>{email}</strong></p>
-                
-                <button onClick={() => setIsLoggedIn(false)}  className="logout-btn">
-                    Logout 
-                </button>
+                <div className="user-info">
+                    <p>Logged in as: <strong>{email}</strong></p>
+                    <button onClick={() => setIsLoggedIn(false)} className="logout-btn">
+                        Logout
+                    </button>
                 </div>
-
 
                 <div className="tasks-preview">
-                    <button onClick={add} >new task</button>
-                    <button onClick={reset} >delete all tasks</button>
-                    <h2>{thing}</h2>
+                    <button onClick={addTask}>new task</button>
+                    <button onClick={clearAllTasks}>delete all tasks</button>
+                    <div>
+                        {tasks.map(task => (
+                            <div key={task.id}>
+                                <input type="text" placeholder="task" />
+                                <button onClick={() => setTasks(prev => prev.filter(t => t.id !== task.id))}>×</button>
+                            </div>//remove tasks button...i have no hand in this tbh!
+                        ))}
+                    </div>
                 </div>
             </div>
-            );
-        }
+        );
+    }
     
         
 
